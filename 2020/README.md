@@ -29,8 +29,7 @@ Language: **Python3**
 1. Run `source setup.sh`  
 
 ### How To Run day_xx part_x
-Prerequisite: install python3  
-1. Navigate to the 2020 directory via commandline  
-2. `python3 -m day_xx.part_x`  
+1. Navigate to Advent_of_Code/2020/  
+2. Run `python3 -m day_xx.part_x`  
 Example: for day\_01 part\_a, it would be `python3 -m day_01.part_a`  
 
