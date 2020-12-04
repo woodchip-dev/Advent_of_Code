@@ -16,6 +16,7 @@ def line_to_list(file_name):
 	# expect: list of line values w/o whitespace
 	return data
 
+# expect: file w/ groups of lines separated by blank
 def separated_by_blanks(file_name):
 	# open file
 	file_in = open(file_name, 'r')
