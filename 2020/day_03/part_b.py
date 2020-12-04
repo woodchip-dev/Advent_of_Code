@@ -10,10 +10,9 @@ def calculate_collisions(data, x_inc, y_inc):
     x, count = 0, 0
     for y in range(0, height, y_inc):
         if data[y][x] == '#':
-            count = count + 1
-        x = x + x_inc
-        if x >= width:
-            x = x - width
+            count += 1
+        x += x_inc
+        x %= width
     return count
 
 # find the product of tree collisions for R1,D1; R3,D1; R5,D1; R7,D1; R1,D2
@@ -23,7 +22,7 @@ answer = calculate_collisions(data, slopes[0][0], slopes[0][1])
 iter_slopes = iter(slopes)
 next(iter_slopes)
 for item in iter_slopes:
-    answer = answer * calculate_collisions(data, item[0], item[1])
+    answer *= calculate_collisions(data, item[0], item[1])
 found = True
 
 ### END SOLUTION BODY ###

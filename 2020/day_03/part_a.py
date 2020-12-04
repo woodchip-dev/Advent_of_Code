@@ -10,10 +10,9 @@ found, answer = False, 0
 width, height, x = len(data[0]), len(data), 0
 for y in range(height):
     if data[y][x] == '#':
-        answer = answer + 1
-    x = x + 3
-    if x >= width:
-        x = x - width
+        answer += 1
+    x += 3
+    x %= width
 found = True
 
 ### END SOLUTION BODY ###
