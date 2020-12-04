@@ -1,4 +1,4 @@
-import utils, re
+import utils, re, json
 
 # fetch data
 data = utils.separated_by_blanks('input_files/aoc_04.txt')
@@ -12,11 +12,10 @@ passports = []
 for item in data:
     temp = {}
     if 'byr' in item and 'iyr' in item and 'eyr' in item and 'hgt' in item and 'hcl' in item and 'ecl' in item and 'pid' in item:
-        fields = item.split(' ')
-        for field in fields:
-            key, val = field.split(':')
-            temp[key] = val
-        passports.append(temp)
+        item = item.replace(' ','","')
+        item = item.replace(':','":"')
+        item = '{"' + item + '"}'
+        passports.append(json.loads(item))
 
 ecls = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 for passport in passports:
