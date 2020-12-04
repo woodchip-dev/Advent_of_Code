@@ -5,9 +5,9 @@ data = utils.separated_by_blanks('input_files/aoc_04.txt')
 
 ### START SOLUTION BODY ###
 
-# task overview comment
+# find the number of passports that are both valid and correct;
+# valid passports are correct if field requirements are met
 found, answer = False, 0
-# add code here
 passports = []
 for item in data:
     temp = {}
