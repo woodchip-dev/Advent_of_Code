@@ -75,5 +75,9 @@ try:
     subprocess.run(['touch', 'input_files/aoc_{}.txt'.format(next_day)], check=True)
 except subprocess.CalledProcessError as err:
     tidy_pass(err.args)
+try:
+    subprocess.run(['git', 'add', 'day_{}/part_a.py'.format(next_day), 'day_{}/part_b.py'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day)], check=True)
+except subprocess.CalledProcessError as err:
+    tidy_exit(err.args)
 
 print('SUCCESS')
