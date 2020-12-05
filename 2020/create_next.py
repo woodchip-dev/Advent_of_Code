@@ -76,11 +76,11 @@ try:
 except subprocess.CalledProcessError as err:
     tidy_pass(err.args)
 try:
-    subprocess.run(['git', 'add', 'day_{}/part_*.py'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day)], check=True)
+    subprocess.run(['git', 'add', 'day_{}/part_*'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day)], check=True)
 except subprocess.CalledProcessError as err:
     tidy_exit(err.args)
 try:
-    subprocess.run(['git', 'commit', 'day_{}/part_*.py'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day), '-m', '"Feat: adds initial day {} files"'.format(next_day)], check=True)
+    subprocess.run(['git', 'commit', 'day_{}/part_*'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day), '-m', '"Feat: adds initial day {} files"'.format(next_day)], check=True)
 except subprocess.CalledProcessError as err:
     tidy_exit(err.args)
 try:
