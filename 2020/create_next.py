@@ -42,6 +42,10 @@ try:
 except subprocess.CalledProcessError as err:
     tidy_exit(err.args)
 try:
+    subprocess.run(['git', 'pull'], check=True)
+except subprocess.CalledProcessError as err:
+    tidy_exit(err.args)
+try:
     subprocess.run(['git', 'branch', '-d', 'day_{}'.format(prev_day)], check=True)
 except subprocess.CalledProcessError as err:
     tidy_pass(err.args)
