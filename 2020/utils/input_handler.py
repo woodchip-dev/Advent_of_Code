@@ -16,6 +16,21 @@ def line_to_list(file_name):
 	# expect: list of line values w/o whitespace
 	return data
 
+# expect: file w/ one value per line
+def lines_to_ints(file_name):
+	# open file
+	file_in = open(file_name, 'r')
+	lines = file_in.readlines()
+	
+	# strip whitespace
+	data = []
+	for line in lines:
+		if not line.strip() == '':
+			data.append(int(line.strip()))
+	
+	# expect: list of line values w/o whitespace
+	return data
+
 # expect: file w/ groups of lines separated by blank
 def separated_by_blanks(file_name):
 	# open file
