@@ -1,13 +1,21 @@
 import utils
 
 # fetch data
-data = utils.line_to_list('input_files/aoc_xx.txt')
+data = utils.lines_to_ints('input_files/aoc_10.txt')
 
 ### START SOLUTION BODY ###
 
-# task overview comment
-found, answer = False, None
-# add code here
+# find the product of the number of 1- and 3-volt differences
+found, answer = False, 0
+data.sort()
+ones, threes = 1, 1
+for idx in range(len(data) - 1):
+    if data[idx + 1] == data[idx] + 1:
+        ones += 1
+    elif data[idx + 1] == data[idx] + 3:
+        threes += 1
+answer = ones * threes
+found = True
 
 ### END SOLUTION BODY ###
 
