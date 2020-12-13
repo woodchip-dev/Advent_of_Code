@@ -56,7 +56,7 @@ for item in data:
         heading = determine_heading(heading, False, item[1:])
     elif item[0] == 'R':
         heading = determine_heading(heading, True, item[1:])
-answer = x + y
+answer = abs(x) + abs(y)
 found = True
 
 ### END SOLUTION BODY ###
