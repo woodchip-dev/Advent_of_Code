@@ -7,10 +7,10 @@ data = utils.line_to_list('input_files/aoc_11.txt')
 
 def identify_adjacents(data, width, height, tx, ty):
     temp = []
-    for x in range(-1, 2):
-        for y in range(-1, 2):
-            if (not x == 0 or not y == 0) and ((tx + x >= 0 and tx + x < width) and (ty + y >= 0 and ty + y < height)):
-                temp.append(data[ty + y][tx + x])
+    paths = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    for path in paths:
+        if (not path[0] == 0 or not path[1] == 0) and ((tx + path[0] >= 0 and tx + path[0] < width) and (ty + path[1] >= 0 and ty + path[1] < height)):
+            temp.append(data[ty + path[1]][tx + path[0]])
     return temp
 
 # find how many seats end up occupied
