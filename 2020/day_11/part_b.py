@@ -1,13 +1,56 @@
 import utils
 
 # fetch data
-data = utils.line_to_list('input_files/aoc_xx.txt')
+data = utils.line_to_list('input_files/aoc_11.txt')
 
 ### START SOLUTION BODY ###
 
-# task overview comment
+def identify_adjacents(data, width, height, tx, ty):
+    temp = []
+    paths = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    for path in paths:
+        if (tx + path[0] >= 0 and tx + path[0] < width) and (ty + path[1] >= 0 and ty + path[1] < height):
+            if not data[ty + path[1]][tx + path[0]] == '.':
+                temp.append(data[ty + path[1]][tx + path[0]])
+            elif data[ty + path[1]][tx + path[0]] == '.':
+                mult = 1
+                while 1:
+                    if (tx + (path[0] * mult) >= 0 and tx + (path[0] * mult) < width) and (ty + (path[1] * mult) >= 0 and ty + (path[1] * mult) < height):
+                        if not data[ty + (path[1] * mult)][tx + (path[0] * mult)] == '.':
+                            temp.append(data[ty + (path[1] * mult)][tx + (path[0] * mult)])
+                            break
+                        else:
+                            mult += 1
+                    else:
+                        break
+    return temp
+
+# find how many seats end up occupied
 found, answer = False, None
-# add code here
+width, height = len(data[0]), len(data)
+for idx in range(len(data)):
+    data[idx] = [char for char in data[idx]]
+
+count = 0
+while 1:
+    storage = {}
+    for idx in range(width):
+        for idy in range(height):
+            storage[(idx, idy)] = identify_adjacents(data, width, height, idx, idy)
+    changed = False
+    for item in storage:
+        if data[item[1]][item[0]] == 'L' and storage[item].count('#') == 0:
+            data[item[1]][item[0]] = '#'
+            count += 1
+            changed = True
+        elif data[item[1]][item[0]] == '#' and storage[item].count('#') >= 5:
+            data[item[1]][item[0]] = 'L'
+            count -= 1
+            changed = True
+    if not changed:
+        break
+answer = count
+found = True
 
 ### END SOLUTION BODY ###
 
