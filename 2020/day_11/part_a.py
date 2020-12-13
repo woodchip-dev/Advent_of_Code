@@ -9,7 +9,7 @@ def identify_adjacents(data, width, height, tx, ty):
     temp = []
     paths = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
     for path in paths:
-        if (not path[0] == 0 or not path[1] == 0) and ((tx + path[0] >= 0 and tx + path[0] < width) and (ty + path[1] >= 0 and ty + path[1] < height)):
+        if ((tx + path[0] >= 0 and tx + path[0] < width) and (ty + path[1] >= 0 and ty + path[1] < height)):
             temp.append(data[ty + path[1]][tx + path[0]])
     return temp
 
