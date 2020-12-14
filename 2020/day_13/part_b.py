@@ -1,4 +1,5 @@
 import utils
+from sympy.ntheory.modular import crt
 
 # fetch data
 data = utils.line_to_list('input_files/aoc_13.txt')
@@ -10,22 +11,8 @@ found, answer = False, None
 time_table = data[1].split(',')
 buses = [int(bus) for bus in time_table if not bus == 'x']
 index = [i for i in range(len(time_table)) if not time_table[i] == 'x']
-schedules = list(map(lambda i, b : (i, b), index, buses))
-idx, time = 0, 0
-clocked = []
-while idx < len(schedules):
-    offset = 1
-    print(time)
-    if time % schedules[idx][1] == 0:
-        clocked.append(time)
-        idx +=1
-        if idx < len(schedules):
-            offset = schedules[idx][0] - schedules[idx - 1][0]
-    else:
-        idx = 0
-        clocked = []
-    time += offset
-answer = clocked[0]
+crt_ans = crt(buses, index)
+answer = crt_ans[1] - crt_ans[0]
 found = True
 
 ### END SOLUTION BODY ###
