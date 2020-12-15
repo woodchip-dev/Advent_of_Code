@@ -36,6 +36,19 @@ for day in days:
 next_day = pad(prev_day + 1)
 prev_day = pad(prev_day)
 
+# quit if remote branch for previous day still exists
+try:
+    subprocess.run(['git', 'remote', 'update', 'origin', '--prune'], check=True)
+except subprocess.CalledProcessError as err:
+    tidy_pass(err.args)
+try:
+    subprocess.run(['git', 'branch', '-a'], check=True)
+    # collect output
+    # check for branch name
+    # quit if it exists
+except subprocess.CalledProcessError as err:
+    tidy_exit(err.args)
+
 # git cleanup and next day preparations
 try:
     subprocess.run(['git', 'checkout', 'main'], check=True)
