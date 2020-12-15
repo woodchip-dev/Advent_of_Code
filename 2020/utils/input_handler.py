@@ -31,6 +31,18 @@ def lines_to_ints(file_name):
 	# expect: list of line values w/o whitespace
 	return data
 
+# expect: file w/ one comma-separated line
+def commas_to_list(file_name):
+	# open file
+	file_in = open(file_name, 'r')
+	line = file_in.readline()
+	
+	# strip whitespace, split
+	data = line.strip().split(',')
+	
+	# expect: list of line values w/o whitespace
+	return data
+
 # expect: file w/ groups of lines separated by blank
 def separated_by_blanks(file_name):
 	# open file
