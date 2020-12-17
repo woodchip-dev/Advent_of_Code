@@ -1,13 +1,23 @@
 import utils
 
 # fetch data
-data = utils.line_to_list('input_files/aoc_xx.txt')
+data = utils.different_groups('input_files/aoc_16.txt')
 
 ### START SOLUTION BODY ###
 
-# task overview comment
-found, answer = False, None
-# add code here
+# find my ticket scanning error rate
+found, answer = False, 0
+fields = {item.split(': ')[0]: [(int(num.split('-')[0]), int(num.split('-')[1])) for num in item.split(': ')[1].split(' or ')] for item in data[0]}
+tickets = [[int(num) for num in item.split(',')] for item in data[2][1:]]
+for ticket in tickets:
+    for val in ticket:
+        good = False
+        for field in fields:
+            if (fields[field][0][0] <= val and val <= fields[field][0][1]) or (fields[field][1][0] <= val and val <= fields[field][1][1]):
+                good = True
+        if not good:
+            answer += val
+found = True
 
 ### END SOLUTION BODY ###
 
