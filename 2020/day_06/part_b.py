@@ -1,7 +1,7 @@
 import utils
 
 # fetch data
-data = utils.separated_by_blanks('input_files/aoc_06.txt')
+data = utils.congruous_groups('input_files/aoc_06.txt')
 
 ### START SOLUTION BODY ###
 

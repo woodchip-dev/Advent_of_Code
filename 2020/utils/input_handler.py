@@ -43,8 +43,8 @@ def commas_to_list(file_name):
 	# expect: list of line values w/o whitespace
 	return data
 
-# expect: file w/ groups of lines separated by blank
-def separated_by_blanks(file_name):
+# expect: file w/ same groups of lines separated by blank line
+def congruous_groups(file_name):
 	# open file
 	file_in = open(file_name, 'r')
 	lines = file_in.readlines()
@@ -58,6 +58,25 @@ def separated_by_blanks(file_name):
 		else:
 			data.append(temp[:-1])
 			temp = ''
+	
+	# expect: list of values w/o whitespace
+	return data
+
+# expect: file w/ different groups of lines separated by blank line
+def different_groups(file_name):
+	# open file
+	file_in = open(file_name, 'r')
+	lines = file_in.readlines()
+	lines.append('\n')
+
+	# strip whitespace
+	data, temp = [], []
+	for line in lines:
+		if not line.strip() == '':
+			temp.append(line.strip())
+		else:
+			data.append(temp)
+			temp = []
 	
 	# expect: list of values w/o whitespace
 	return data
