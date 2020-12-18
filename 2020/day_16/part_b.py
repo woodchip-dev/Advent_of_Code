@@ -24,12 +24,9 @@ for idx in reversed(indices):
 tickets.append(my_ticket)
 aggr = {idx: [ticket[idx] for ticket in tickets] for idx in range(len(tickets[0]))}
 record, candidates = {}, {}
-tag, idx = '', 0
-temp_val, temp_field, departures = 0, '', 0
 for field in fields:
     if not field in list(record.keys()):
         candidates[field] = []
-    temp_field = field
     for agg in aggr:
         temp = agg
         if all(not val < fields[field][0][0] and not (fields[field][0][1] < val and val < fields[field][1][0]) and not fields[field][1][1] < val for val in aggr[agg]):
