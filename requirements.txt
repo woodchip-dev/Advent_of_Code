@@ -1,0 +1,11 @@
+astroid
+isort
+lazy-object-proxy
+mccabe
+mpmath
+pylint
+six
+sympy
+toml
+typed-ast
+wrapt

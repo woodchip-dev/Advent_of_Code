@@ -8,3 +8,11 @@ def one_val_out(found, val):
 	else:
 		print('not found')
 
+# expect: list of values
+def list_vals_out(found, vals):
+	if found:
+		for val in vals:
+			print(val)
+	else:
+		print('not found')
+

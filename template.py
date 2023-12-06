@@ -1,7 +1,7 @@
 import utils
 
 # fetch data
-data = utils.line_to_list('input_files/aoc_xx.txt')
+data = utils.lines_to_lists('20xx/input_files/aoc_xx.txt')
 
 ### START SOLUTION BODY ###
 

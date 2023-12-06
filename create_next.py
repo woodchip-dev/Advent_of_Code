@@ -37,30 +37,30 @@ next_day = pad(prev_day + 1)
 prev_day = pad(prev_day)
 
 # git cleanup and next day preparations
-try:
-    subprocess.run(['git', 'checkout', 'main'], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
-try:
-    subprocess.run(['git', 'pull'], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
-try:
-    subprocess.run(['git', 'branch', '-d', 'day_{}'.format(prev_day)], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_pass(err.args)
-try:
-    subprocess.run(['git', 'remote', 'update', 'origin', '--prune'], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_pass(err.args)
-try:
-    subprocess.run(['git', 'branch', 'day_{}'.format(next_day)], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
-try:
-    subprocess.run(['git', 'checkout', 'day_{}'.format(next_day)], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'checkout', 'main'], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'pull'], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'branch', '-d', 'day_{}'.format(prev_day)], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_pass(err.args)
+# try:
+#     subprocess.run(['git', 'remote', 'update', 'origin', '--prune'], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_pass(err.args)
+# try:
+#     subprocess.run(['git', 'branch', 'day_{}'.format(next_day)], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'checkout', 'day_{}'.format(next_day)], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
 
 # next day preparations
 try:
@@ -79,17 +79,17 @@ try:
     subprocess.run(['touch', 'input_files/aoc_{}.txt'.format(next_day)], check=True)
 except subprocess.CalledProcessError as err:
     tidy_pass(err.args)
-try:
-    subprocess.run(['git', 'add', 'day_{}/part_*'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day)], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
-try:
-    subprocess.run(['git', 'commit', 'day_{}/part_*'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day), '-m', 'Feat: adds initial day {} files'.format(next_day)], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
-try:
-    subprocess.run(['git', 'push', '--set-upstream', 'origin', 'day_{}'.format(next_day)], check=True)
-except subprocess.CalledProcessError as err:
-    tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'add', 'day_{}/part_*'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day)], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'commit', 'day_{}/part_*'.format(next_day), 'input_files/aoc_{}.txt'.format(next_day), '-m', 'Feat: adds initial day {} files'.format(next_day)], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
+# try:
+#     subprocess.run(['git', 'push', '--set-upstream', 'origin', 'day_{}'.format(next_day)], check=True)
+# except subprocess.CalledProcessError as err:
+#     tidy_exit(err.args)
 
 print('SUCCESS')
