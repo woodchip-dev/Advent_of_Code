@@ -2,9 +2,6 @@
 # functions to handle cases will be added as needed
 
 # expect: file w/ one value per line
-from typing import ItemsView
-
-
 def lines_to_lists(file_name):
 	# open file
 	file_in = open(file_name, 'r')
